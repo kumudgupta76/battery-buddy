@@ -1,7 +1,7 @@
 import { Calendar, Col, Row, Select, Radio, Typography, Progress, Spin } from 'antd';
 import React, { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
-import { green, red } from '@ant-design/colors';
+import { green, red, blue } from '@ant-design/colors';
 import { LoadingOutlined } from '@ant-design/icons';
 
 const { Text, Link, Title } = Typography;
@@ -23,9 +23,9 @@ const month = [
 
 const Cal = () => {
   const conicColors = {
-    '0%': '#ffccc7',
+    '0%': '#87d068',
     '50%': '#ffe58f',
-    '100%': '#87d068'
+    '100%': '#fb3623'
   };
 
   const [value, setValue] = useState(0);
@@ -72,6 +72,36 @@ const Cal = () => {
     }
   };
 
+  const colorMap = {
+    'red': '#ff4d4f',
+    'green': '#52c41a',
+    'blue': '#1890ff'
+  };
+
+  const gradientColorsMap = {
+    'red': {
+      '0%': '#ff4d4f',
+      '100%': '#f47340'
+    },
+    'green' :{
+      '0%': '#87d068',
+      '100%': '#52c41a',
+    },
+    'blue':{
+      '0%': '#1890ff',
+      '100%': '#74bcff',
+    }  }
+
+  const getBatteryColor = (value) => {
+    if (value < 20) {
+      return 'red'; 
+    } else if (value <= 70) {
+      return 'green';
+    } else {
+      return 'blue';
+    }
+  };
+
   return (
     <div className='outer-container'>
       {
@@ -90,10 +120,11 @@ const Cal = () => {
               <Title level={4}> Battery Status</Title>
             </Col>
             <Col span={24} style={{ textAlign: 'center', marginTop: '30px' }}>
-              <Progress type='dashboard' percent={value} strokeColor={conicColors} size='large' />
+              <Progress type='dashboard' percent={value} strokeColor={gradientColorsMap[getBatteryColor(value)]} size='large' />
             </Col>
             <Col span={24} style={{ textAlign: 'center', marginTop: '30px' }}>
-              <Progress steps={5} percent={value} strokeWidth={30} />
+              <Progress steps={5} percent={value} strokeWidth={30}  strokeColor={colorMap[getBatteryColor(value)]}/>
+
             </Col>
             {batteryCharging && <Col span={24} style={{ textAlign: 'center', justifyContent: "center", marginTop: '30px' }}>
               <Title level={4}>Charging⚡</Title>
