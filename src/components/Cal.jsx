@@ -1,8 +1,9 @@
-import { Calendar, Col, Row, Select, Radio, Typography, Progress, Spin } from 'antd'
-import React, { useEffect, useState } from 'react'
-import dayjs from 'dayjs'
-import { green, red } from '@ant-design/colors'
+import { Calendar, Col, Row, Select, Radio, Typography, Progress, Spin } from 'antd';
+import React, { useEffect, useState } from 'react';
+import dayjs from 'dayjs';
+import { green, red } from '@ant-design/colors';
 import { LoadingOutlined } from '@ant-design/icons';
+
 const { Text, Link, Title } = Typography;
 
 const month = [
@@ -18,59 +19,60 @@ const month = [
   'October',
   'November',
   'December'
-]
+];
 
 const Cal = () => {
   const conicColors = {
     '0%': '#ffccc7',
     '50%': '#ffe58f',
     '100%': '#87d068'
-  }
+  };
 
-  const [value, setValue] = useState(() => 0)
-  const [batterySupported, setBatterySupported] = useState(() => true)
+  const [value, setValue] = useState(0);
+  const [batterySupported, setBatterySupported] = useState(true);
+  const [batteryCharging, setBatteryCharging] = useState(false);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       // Call your method here
-      myMethod()
-    }, 1000) // Interval of 1000 milliseconds (1 seconds)
+      myMethod();
+    }, 1000); // Interval of 1000 milliseconds (1 seconds)
 
     // Clear the interval when the component unmounts
-    return () => clearInterval(intervalId)
-  }, []) // Empty dependency array to run this effect only once when the component mounts
+    return () => clearInterval(intervalId);
+  }, []); // Empty dependency array to run this effect only once when the component mounts
 
   // Method to be called at the interval
   const myMethod = () => {
-    console.log('Method called every 5 seconds')
+    console.log('Method called every 1 second');
     // Add your method logic here
 
     if ('getBattery' in navigator) {
       navigator.getBattery().then(function (battery) {
         // Update battery status initially
-        updateBatteryStatus(battery)
+        updateBatteryStatus(battery);
 
         // Update battery status whenever it changes
         battery.addEventListener('chargingchange', function () {
-          updateBatteryStatus(battery)
-        })
+          updateBatteryStatus(battery);
+        });
 
         battery.addEventListener('levelchange', function () {
-          updateBatteryStatus(battery)
-        })
-      })
+          updateBatteryStatus(battery);
+        });
+      });
 
       function updateBatteryStatus(battery) {
-        var percentage = Math.round(battery.level * 100)
-        setValue(percentage)
+        var percentage = Math.round(battery.level * 100);
+        setValue(percentage);
+        setBatteryCharging(battery.charging);
       }
     } else {
-      setBatterySupported(false)
+      setBatterySupported(false);
     }
-  }
+  };
 
   return (
-
     <div className='outer-container'>
       {
         batterySupported ?
@@ -93,10 +95,13 @@ const Cal = () => {
             <Col span={24} style={{ textAlign: 'center', marginTop: '30px' }}>
               <Progress steps={5} percent={value} strokeWidth={30} />
             </Col>
+            {batteryCharging && <Col span={24} style={{ textAlign: 'center', justifyContent: "center", marginTop: '30px' }}>
+              <Title level={4}>Charging⚡</Title>
+            </Col>}
           </Row>
           : <Title level={3}> Battery Status API not supported</Title>
       }
     </div>
-  )
-}
-export default Cal
+  );
+};
+export default Cal;

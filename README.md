@@ -1,102 +1,102 @@
-### About This Repo 
+# Battery Buddy
 
-this repo can be used as bolierplate for react app(antd) with basic pwa requirements.
-There are few steps which can be followed to get this in work
+Battery Buddy is a progressive web app (PWA) built with React that monitors and displays the current battery status of your device. This app helps users keep track of their battery levels and receive alerts when their battery is low.
 
-  -  import this repo, go to https://github.com/new/import
-  -  copy this repo url in to input box - https://github.com/kumudgupta76/mobile-helper
-  -  open in codespaces
-  -  npm install
-  -  npm run deploy - this will create build and push changes to gh-pages branch
-  - 
+## Table of Contents
 
-To view this repo go to url - https://kumudgupta76.github.io/mobile-helper/
+- [Features](#features)
+- [Demo](#demo)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
+## Features
 
-# Getting Started with Create React App
+- Displays the current battery percentage
+- Shows whether the device is charging or discharging
+- Works offline as a progressive web app (PWA)
+- Simple and user-friendly interface
+- Notifications for low battery status (Future Enhancement)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Demo
 
-## Available Scripts
+Check out the live demo [here](https://kumudgupta76.github.io/battery-buddy/) (link to your deployed app).
 
-In the project directory, you can run:
+## Installation
 
-### `npm start`
+To get a local copy up and running, follow these simple steps:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. **Clone the repository**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    ```bash
+    git clone https://github.com/kumudgupta76/battery-buddy.git
+    cd battery-buddy
+    ```
 
-### `npm test`
+2. **Install dependencies**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    ```bash
+    npm install
+    ```
 
-### `npm run build`
+3. **Start the development server**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    ```bash
+    npm start
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    The app should now be running on `http://localhost:3000`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Usage
 
-### `npm run deploy`
+Once the app is running, open it in your browser. The app will display the current battery status, including:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Battery percentage
+- Charging status
+- Estimated time to full charge/discharge
 
-Under the hood, the predeploy script will build a distributable version of the React app and store it in a folder named build. Then, the deploy script will push the contents of that folder to a new commit on the gh-pages branch of the GitHub repository, creating that branch if it doesn't already exist.
+The app will continue to function offline thanks to its PWA capabilities.
 
-By default, the new commit on the gh-pages branch will have a commit message of "Updates". You can specify a custom commit message via the -m option, like this:
+## Contributing
 
-$ npm run deploy -- -m "Deploy React app to GitHub Pages"
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
+To contribute:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Fork the Project**
 
-See the section about [deployment](https://github.com/gitname/react-gh-pages?tab=readme-ov-file#7-push-the-react-app-to-the-github-repository) for more information.
+    ```bash
+    git clone https://github.com/kumudgupta76/battery-buddy.git
+    ```
 
-### `npm run eject`
+2. **Create your Feature Branch**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    ```bash
+    git checkout -b feature/YourFeature
+    ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. **Commit your Changes**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    ```bash
+    git commit -m 'Add some feature'
+    ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. **Push to the Branch**
 
-## Learn More
+    ```bash
+    git push origin feature/YourFeature
+    ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5. **Open a Pull Request**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## License
 
-### Code Splitting
+Distributed under the MIT License. See `LICENSE` for more information.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Contact
 
-### Analyzing the Bundle Size
+Your Name - [@kumudgupta76](https://www.linkedin.com/in/kumudgupta76) - kumudgupta@gmail.com
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Project Link: [https://github.com/kumudgupta76/battery-buddy](https://github.com/kumudgupta76/battery-buddy)

@@ -1,6 +1,6 @@
 {
-  "short_name": "MobileHelper",
-  "name": "Mobile Helper Application",
+  "short_name": "Battery Buddy",
+  "name": "Battery Buddy",
   "icons": [
     {
       "src": "battery_256.png",
