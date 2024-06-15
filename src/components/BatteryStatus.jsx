@@ -1,32 +1,10 @@
-import { Calendar, Col, Row, Select, Radio, Typography, Progress, Spin } from 'antd';
+import { Col, Row, Typography, Progress, Spin } from 'antd';
 import React, { useEffect, useState } from 'react';
-import dayjs from 'dayjs';
-import { green, red, blue } from '@ant-design/colors';
 import { LoadingOutlined } from '@ant-design/icons';
 
-const { Text, Link, Title } = Typography;
+const { Title } = Typography;
 
-const month = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December'
-];
-
-const Cal = () => {
-  const conicColors = {
-    '0%': '#87d068',
-    '50%': '#ffe58f',
-    '100%': '#fb3623'
-  };
+const BatteryStatus = () => {
 
   const [value, setValue] = useState(0);
   const [batterySupported, setBatterySupported] = useState(true);
@@ -96,9 +74,9 @@ const Cal = () => {
     if (value < 20) {
       return 'red'; 
     } else if (value <= 70) {
-      return 'green';
-    } else {
       return 'blue';
+    } else {
+      return 'green';
     }
   };
 
@@ -135,4 +113,4 @@ const Cal = () => {
     </div>
   );
 };
-export default Cal;
+export default BatteryStatus;
