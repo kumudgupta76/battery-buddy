@@ -9,7 +9,7 @@ const BatteryStatus = () => {
   const [value, setValue] = useState(0);
   const [batterySupported, setBatterySupported] = useState(true);
   const [batteryCharging, setBatteryCharging] = useState(false);
-  const [notifiedLowBattery, setNotifiedLowBattery] = useState(false); // Track if low battery notification has been shown
+  const [notifiedLowBattery, setNotifiedLowBattery] = useState(false);
 
   useEffect(() => {
     // Request permission for notifications
@@ -19,43 +19,39 @@ const BatteryStatus = () => {
 
     if ('getBattery' in navigator) {
       navigator.getBattery().then((battery) => {
-        updateBatteryStatus(battery);
+        setBattery(battery);
+        const updateBatteryStatus = () => {
+          const percentage = Math.round(battery.level * 100);
+          setValue(percentage);
+          setBatteryCharging(battery.charging);
 
-        // Add event listeners
-        const handleChargingChange = () => updateBatteryStatus(battery);
-        const handleLevelChange = () => updateBatteryStatus(battery);
+          // Show notification if battery level is below 20% and notification hasn't been shown
+          if (percentage < 20 && !notifiedLowBattery) {
+            showLowBatteryNotification(percentage);
+            setNotifiedLowBattery(true);
+          }
 
-        battery.addEventListener('chargingchange', handleChargingChange);
-        battery.addEventListener('levelchange', handleLevelChange);
+          // Reset notification flag if battery level goes above 20%
+          if (percentage >= 20 && notifiedLowBattery) {
+            setNotifiedLowBattery(false);
+          }
+        };
+
+        updateBatteryStatus();
+
+        battery.addEventListener('chargingchange', updateBatteryStatus);
+        battery.addEventListener('levelchange', updateBatteryStatus);
 
         // Clean up event listeners on unmount
         return () => {
-          battery.removeEventListener('chargingchange', handleChargingChange);
-          battery.removeEventListener('levelchange', handleLevelChange);
+          battery.removeEventListener('chargingchange', updateBatteryStatus);
+          battery.removeEventListener('levelchange', updateBatteryStatus);
         };
       });
     } else {
       setBatterySupported(false);
     }
-  }, []); // This effect runs only once when the component mounts
-
-  const updateBatteryStatus = (battery) => {
-    setBattery(battery)
-    let percentage = Math.round(battery.level * 100);
-    setValue(percentage);
-    setBatteryCharging(battery.charging);
-
-    // Show notification if battery level is below 20% and notification hasn't been shown
-    if (percentage < 20 && !notifiedLowBattery) {
-      showLowBatteryNotification(percentage);
-      setNotifiedLowBattery(true); // Set flag to true after notification
-    }
-
-    // Reset notification flag if battery level is above 20%
-    if (percentage >= 20 && notifiedLowBattery) {
-      setNotifiedLowBattery(false);
-    }
-  };
+  }, [notifiedLowBattery]); // Only add notifiedLowBattery as a dependency
 
   const colorMap = {
     red: '#ff4d4f',
@@ -93,7 +89,7 @@ const BatteryStatus = () => {
       const notification = new Notification(`⚠️ Low Battery Warning (${percent}%)🪫`, {
         body: 'Your battery is below 20%. Please charge your device.',
         icon: 'battery-64.png', // Replace with your icon path
-        requireInteraction: true, // The notification will stay until the user interacts
+        requireInteraction: true,
       });
 
       notification.onclick = () => {
@@ -143,7 +139,7 @@ const BatteryStatus = () => {
                 <Title level={4}>Charging⚡</Title>
               </Col>
             )}
-            {value != 100 && (batteryCharging ? 
+                        {value != 100 && (batteryCharging ? 
               <Col span={24} style={{ textAlign: 'center', justifyContent: 'center', marginTop: '30px' }}>
                 <Title level={4}>{`Charging Time: ${battery.chargingTime} seconds`}</Title>
               </Col>
