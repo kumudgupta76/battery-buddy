@@ -139,7 +139,7 @@ const BatteryStatus = () => {
                 <Title level={4}>Charging⚡</Title>
               </Col>
             )}
-                        {value != 100 && (batteryCharging ? 
+                        {value !== 100 && (batteryCharging ? 
               <Col span={24} style={{ textAlign: 'center', justifyContent: 'center', marginTop: '30px' }}>
                 <Title level={4}>{`Charging Time: ${battery.chargingTime} seconds`}</Title>
               </Col>
