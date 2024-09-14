@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/battery-buddy/static/css/main.ad696280.css",
-    "main.js": "/battery-buddy/static/js/main.b3f910c0.js",
+    "main.css": "/battery-buddy/static/css/main.8274da5a.css",
+    "main.js": "/battery-buddy/static/js/main.c1f24791.js",
     "static/js/787.e42097e1.chunk.js": "/battery-buddy/static/js/787.e42097e1.chunk.js",
     "index.html": "/battery-buddy/index.html",
-    "main.ad696280.css.map": "/battery-buddy/static/css/main.ad696280.css.map",
-    "main.b3f910c0.js.map": "/battery-buddy/static/js/main.b3f910c0.js.map",
+    "main.8274da5a.css.map": "/battery-buddy/static/css/main.8274da5a.css.map",
+    "main.c1f24791.js.map": "/battery-buddy/static/js/main.c1f24791.js.map",
     "787.e42097e1.chunk.js.map": "/battery-buddy/static/js/787.e42097e1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ad696280.css",
-    "static/js/main.b3f910c0.js"
+    "static/css/main.8274da5a.css",
+    "static/js/main.c1f24791.js"
   ]
 }
