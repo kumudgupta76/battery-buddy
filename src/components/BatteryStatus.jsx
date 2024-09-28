@@ -1,4 +1,4 @@
-import { Col, Row, Typography, Progress, Spin, notification, Input, Button } from 'antd';
+import { Col, Row, Typography, Progress, Spin } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { LoadingOutlined } from '@ant-design/icons';
 
@@ -9,8 +9,6 @@ const BatteryStatus = () => {
   const [value, setValue] = useState(0);
   const [batterySupported, setBatterySupported] = useState(true);
   const [batteryCharging, setBatteryCharging] = useState(false);
-  const [notificationClosed, setNotificationClosed] = useState(false);
-  const [testValue, setTestValue] = useState(100);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -22,29 +20,6 @@ const BatteryStatus = () => {
     return () => clearInterval(intervalId);
   }, []); // Empty dependency array to run this effect only once when the component mounts
 
-  const showNotification = (percentage) => {  
-    Notification.requestPermission().then(perm => {
-      console.log(perm);
-      if (perm === 'granted' && (percentage < 20)) {
-
-        console.log('Notification granted');
-        const notificationjs = new Notification('Battery Low ⚠️', {
-          body: `Battery is ${percentage}%`,
-          icon: '/icon.png',
-          requireInteraction: true
-        });
-
-        notificationjs.onclick = () => {
-          notificationjs.close();
-          setNotificationClosed(true);
-        };
-
-        notificationjs.onclose = () => {
-          setNotificationClosed(true);
-        };
-      }
-    });
-  };
   // Method to be called at the interval
   const myMethod = () => {
     if ('getBattery' in navigator) {
@@ -66,7 +41,6 @@ const BatteryStatus = () => {
         var percentage = Math.round(battery.level * 100);
         setValue(percentage);
         setBatteryCharging(battery.charging);
-        showNotification(percentage);
       }
     } else {
       setBatterySupported(false);
@@ -130,7 +104,7 @@ const BatteryStatus = () => {
             {batteryCharging && <Col span={24} style={{ textAlign: 'center', justifyContent: "center", marginTop: '30px' }}>
               <Title level={4}>Charging⚡</Title>
             </Col>}
-            <div><Button onClick={(e) => showNotification(12)}>Test Notification</Button></div>
+            {/* <div><Button onClick={(e) => showNotification(12)}>Test Notification</Button></div> */}
           </Row>
           
           : <Title level={3}> Battery Status API not supported</Title>
